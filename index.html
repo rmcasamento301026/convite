@@ -646,38 +646,69 @@
     }
 
   
-/* ===== RESPONSIVIDADE APRIMORADA ===== */
-.frame{width:min(1200px,calc(100% - 20px))!important;min-height:100vh!important;padding:clamp(30px,6vw,80px)!important}
-.hero-photo{width:100%!important;max-width:650px!important;aspect-ratio:4/5!important;min-height:auto!important;margin:auto!important}
-.hero-photo img{width:100%!important;height:100%!important;min-height:auto!important;object-fit:cover!important}
-.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
-.btn{min-width:220px}
-.mapa-wrap iframe{width:100%;height:350px}
-@media (max-width:1200px){
-.frame{width:95%!important}
-.content{width:100%!important}
+/* ===== AJUSTES PREMIUM ===== */
+#inicio .script-title{
+ white-space:nowrap!important;
+ font-size:clamp(34px,6vw,78px)!important;
+ text-align:center;
 }
-@media (max-width:992px){
-.script-title{font-size:60px!important}
-.section-title{font-size:52px!important}
-.hero-photo{max-width:500px!important}
+.hero-photo{overflow:hidden}
+.envelope{overflow:hidden}
+.carta{
+ left:8%!important;
+ right:8%!important;
+ bottom:4%!important;
+ height:78%!important;
 }
-@media (max-width:768px){
-.frame{width:100%!important;min-height:auto!important;padding:30px 20px!important}
-.content{width:100%!important}
-.hero-photo{width:100%!important;aspect-ratio:4/5!important}
-.script-title{font-size:42px!important;white-space:normal!important}
-.section-title{font-size:38px!important}
-.lead{font-size:18px!important}
-.actions{flex-direction:column}
-.btn{width:100%;max-width:350px;min-width:0}
-.mapa-wrap iframe{height:240px}
+.envelope.aberto .carta{
+ transform:translateY(-38%) scale(1)!important;
 }
-@media (max-width:480px){
-.logo-rm{width:100px!important}
-.script-title{font-size:34px!important}
-.texto-casamento{font-size:38px!important}
-.hero-photo{aspect-ratio:1/1.2!important}
+.toque{font-weight:700;letter-spacing:2px}
+.cabecalho-convite{
+ margin-top:50px!important;
+}
+.texto-superior{
+ font-weight:700!important;
+ color:#4b5563!important;
+ text-shadow:0 1px 0 rgba(255,255,255,.8);
+}
+.actions{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:16px;
+ flex-wrap:wrap;
+}
+.actions .btn{
+ min-width:230px;
+ text-align:center;
+}
+@media(max-width:768px){
+ #inicio .script-title{
+   white-space:normal!important;
+   font-size:42px!important;
+   line-height:1.1;
+ }
+ .cabecalho-convite{margin-top:30px!important}
+ .texto-superior{
+   font-size:13px!important;
+   font-weight:800!important;
+ }
+ .envelope{
+   width:min(94vw,500px)!important;
+ }
+ .carta{
+   left:6%!important;
+   right:6%!important;
+   height:76%!important;
+ }
+ .envelope.aberto .carta{
+   transform:translateY(-30%) scale(1)!important;
+ }
+ .actions .btn{
+   width:100%;
+   max-width:340px;
+ }
 }
 
 </style>
@@ -729,7 +760,7 @@
           <img src="assets/casal.png" alt="Ronilson e Márcia">
         </figure>
 
-        <h1 class="script-title">Ronilson <span class="amp">&</span> Márcia</h1>
+        <h1 class="script-title">Ronilson&nbsp;<span class="amp">&</span>&nbsp;Márcia</h1>
 
         <div class="data-e-local">
           <div class="numero-dia">30</div>
@@ -765,7 +796,7 @@
       <div class="content">
         <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
         <p class="eyebrow">Uma celebração de amor</p>
-        <h2 class="section-title">Este momento ficará para sempre</h2>
+        <h2 class="section-title">Com muito amor convidam você<br>para celebrar seu casamento</h2>
 
         <div class="mensagem-especial">
           <p class="versiculo">“O amor é paciente, o amor é bondoso.”</p>
@@ -983,3 +1014,4 @@
   </script>
 </body>
 </html>
+
