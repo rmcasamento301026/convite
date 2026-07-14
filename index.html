@@ -646,75 +646,51 @@
     }
 
   
-/* ===== AJUSTES SOLICITADOS ===== */
-.envelope{overflow:hidden!important}
+/* ===== AJUSTES FINAIS ===== */
+.logo-envelope{display:none!important;}
 .carta{
- left:8%!important;
- right:8%!important;
- bottom:5%!important;
- height:72%!important;
- padding:20px!important;
+ left:8%!important;right:8%!important;bottom:6%!important;
+ height:68%!important;padding:18px!important;overflow:hidden;
 }
-.envelope.aberto .carta{
- transform:translateY(-28%) scale(1)!important;
+.carta::before{content:"";position:absolute;inset:10px;border:1px solid rgba(181,138,47,.45);}
+.texto-carta{position:relative;z-index:2;text-align:center;width:100%;}
+.texto-carta p{
+ font-family:'Cinzel',serif;
+ font-size:18px;
+ letter-spacing:1.6px;
+ line-height:1.5;
+ color:#23415f;
+ margin:4px 0;
 }
-.logo-envelope{display:none!important}
+.ornamento-carta{margin-top:12px;font-size:22px;color:#b58a2f;}
+.envelope{overflow:hidden!important;}
+.envelope.aberto .carta{transform:translateY(-20%) scale(1)!important;}
 .horario-local{
  display:flex!important;
  justify-content:center!important;
  align-items:center!important;
- gap:0!important;
- max-width:100%!important;
+ grid-template-columns:none!important;
 }
-.horario-local .vertical{display:none!important}
-.mensagem-bencao,
+.horario-local>.vertical{display:none!important;}
 .cabecalho-convite{
- background:rgba(255,255,255,.70);
+ background:rgba(255,255,255,.72);
  backdrop-filter:blur(6px);
- border-radius:22px;
+ border-radius:20px;
  padding:24px;
- margin:0 auto 35px;
- max-width:820px;
+ max-width:760px;
+ margin:20px auto 30px;
 }
-.texto-superior,
-.lead,
-.cabecalho-convite{
- text-shadow:
- 0 0 8px rgba(255,255,255,1),
- 0 0 18px rgba(255,255,255,.95),
- 0 2px 2px rgba(255,255,255,.95);
+.texto-superior,.lead{
+ text-shadow:0 0 8px #fff,0 0 16px #fff;
  font-weight:700!important;
 }
-.actions{
- display:flex;
- justify-content:center;
- align-items:center;
- gap:18px;
- flex-wrap:wrap;
-}
-.actions .btn{
- width:280px;
- text-align:center;
- display:flex;
- justify-content:center;
- align-items:center;
-}
+.actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.actions .btn{min-width:240px;text-align:center;}
 @media(max-width:768px){
- .actions .btn{
-   width:100%;
-   max-width:340px;
- }
- .cabecalho-convite{
-   margin-top:15px;
-   padding:18px;
- }
- .carta{
-   height:70%!important;
-   transform:translateY(22%) scale(.92);
- }
- .envelope.aberto .carta{
-   transform:translateY(-20%) scale(1)!important;
- }
+ .actions .btn{width:100%;max-width:340px;}
+ #inicio .script-title{white-space:normal!important;}
+ .carta{height:70%!important;}
+ .texto-carta p{font-size:15px;}
 }
 
 </style>
@@ -730,7 +706,7 @@
       <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Abrir convite">
         <div class="carta">
           <div>
-            <h2 style="font-family:'Cinzel',serif;font-size:30px;letter-spacing:2px;color:var(--marinho);line-height:1.5;text-align:center;">COM MUITO AMOR<br>CONVIDAM VOCÊ<br>PARA CELEBRAR SEU CASAMENTO</h2>
+            <div class="texto-carta"><p>COM MUITO AMOR</p><p>CONVIDAM VOCÊ</p><p>PARA CELEBRAR SEU CASAMENTO</p><div class="ornamento-carta">♥</div></div>
             <p>30 • OUTUBRO • 2026</p>
           </div>
         </div>
@@ -772,12 +748,18 @@
           <div class="numero-dia">30</div>
           <div class="mes-ano">OUTUBRO • 2026</div>
 
-          <div class="horario-local" style="display:flex;justify-content:center;align-items:center;">
-<div style="text-align:center">
-<strong>19:00</strong>
-<span>HORAS</span>
-</div>
-</div>
+          <div class="horario-local">
+            <div>
+              
+            </div>
+
+            
+
+            <div>
+              <strong>19:00</strong>
+              <span>HORAS</span>
+            </div>
+          </div>
 
           <div class="cidade">MANAUS – AM</div>
           <div class="linha-ornamental" style="margin:18px auto 0;max-width:360px;color:var(--dourado)">
@@ -1014,4 +996,3 @@
   </script>
 </body>
 </html>
-
