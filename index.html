@@ -581,6 +581,70 @@
       }
     }
 
+  
+    .cabecalho-convite{
+      text-align:center;
+      margin:0 auto 26px;
+      max-width:760px;
+      padding:0 12px;
+    }
+
+    .texto-superior{
+      font-family:'Cinzel',serif;
+      color:var(--marinho);
+      font-size:clamp(10px,1.8vw,15px);
+      letter-spacing:1.4px;
+      line-height:1.6;
+      margin:2px 0;
+      text-transform:uppercase;
+    }
+
+    .texto-casamento{
+      font-family:'Alex Brush',cursive;
+      color:var(--dourado);
+      font-size:clamp(44px,7.5vw,82px);
+      font-weight:400;
+      line-height:1;
+      margin:10px 0 12px;
+    }
+
+    .ornamento-cabecalho{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      color:var(--dourado);
+      max-width:380px;
+      margin:0 auto;
+    }
+
+    .ornamento-cabecalho span{
+      height:1px;
+      flex:1;
+      background:linear-gradient(to right,transparent,var(--dourado),transparent);
+    }
+
+    .ornamento-cabecalho b{
+      font-size:20px;
+      font-weight:400;
+      line-height:1;
+    }
+
+    @media(max-width:600px){
+      .texto-superior{
+        font-size:9px;
+        letter-spacing:.7px;
+      }
+
+      .texto-casamento{
+        font-size:42px;
+      }
+
+      .ornamento-cabecalho{
+        max-width:270px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -615,11 +679,15 @@
     <section class="frame" id="inicio">
       <div class="content">
 
-        <div class="mensagem-bencao">
-          <div class="linha-ornamental"><span>♥</span></div>
-          <p class="eyebrow">Com a bênção de Deus e de nossas famílias,</p>
-          <p class="lead">temos a alegria de convidar você para</p>
-          <div class="linha-ornamental"><span>♥</span></div>
+        <div class="cabecalho-convite">
+          <p class="texto-superior">COM A BÊNÇÃO DE DEUS E DE NOSSAS FAMÍLIAS,</p>
+          <p class="texto-superior">TEMOS A ALEGRIA DE CONVIDAR VOCÊ PARA</p>
+          <h2 class="texto-casamento">o nosso casamento!</h2>
+          <div class="ornamento-cabecalho">
+            <span></span>
+            <b>♥</b>
+            <span></span>
+          </div>
         </div>
 
         <figure class="hero-photo">
