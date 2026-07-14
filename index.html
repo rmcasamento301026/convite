@@ -646,68 +646,74 @@
     }
 
   
-/* ===== AJUSTES PREMIUM ===== */
-#inicio .script-title{
- white-space:nowrap!important;
- font-size:clamp(34px,6vw,78px)!important;
- text-align:center;
-}
-.hero-photo{overflow:hidden}
-.envelope{overflow:hidden}
+/* ===== AJUSTES SOLICITADOS ===== */
+.envelope{overflow:hidden!important}
 .carta{
  left:8%!important;
  right:8%!important;
- bottom:4%!important;
- height:78%!important;
+ bottom:5%!important;
+ height:72%!important;
+ padding:20px!important;
 }
 .envelope.aberto .carta{
- transform:translateY(-38%) scale(1)!important;
+ transform:translateY(-28%) scale(1)!important;
 }
-.toque{font-weight:700;letter-spacing:2px}
+.logo-envelope{display:none!important}
+.horario-local{
+ display:flex!important;
+ justify-content:center!important;
+ align-items:center!important;
+ gap:0!important;
+ max-width:100%!important;
+}
+.horario-local .vertical{display:none!important}
+.mensagem-bencao,
 .cabecalho-convite{
- margin-top:50px!important;
+ background:rgba(255,255,255,.70);
+ backdrop-filter:blur(6px);
+ border-radius:22px;
+ padding:24px;
+ margin:0 auto 35px;
+ max-width:820px;
 }
-.texto-superior{
+.texto-superior,
+.lead,
+.cabecalho-convite{
+ text-shadow:
+ 0 0 8px rgba(255,255,255,1),
+ 0 0 18px rgba(255,255,255,.95),
+ 0 2px 2px rgba(255,255,255,.95);
  font-weight:700!important;
- color:#4b5563!important;
- text-shadow:0 1px 0 rgba(255,255,255,.8);
 }
 .actions{
  display:flex;
  justify-content:center;
  align-items:center;
- gap:16px;
+ gap:18px;
  flex-wrap:wrap;
 }
 .actions .btn{
- min-width:230px;
+ width:280px;
  text-align:center;
+ display:flex;
+ justify-content:center;
+ align-items:center;
 }
 @media(max-width:768px){
- #inicio .script-title{
-   white-space:normal!important;
-   font-size:42px!important;
-   line-height:1.1;
- }
- .cabecalho-convite{margin-top:30px!important}
- .texto-superior{
-   font-size:13px!important;
-   font-weight:800!important;
- }
- .envelope{
-   width:min(94vw,500px)!important;
- }
- .carta{
-   left:6%!important;
-   right:6%!important;
-   height:76%!important;
- }
- .envelope.aberto .carta{
-   transform:translateY(-30%) scale(1)!important;
- }
  .actions .btn{
    width:100%;
    max-width:340px;
+ }
+ .cabecalho-convite{
+   margin-top:15px;
+   padding:18px;
+ }
+ .carta{
+   height:70%!important;
+   transform:translateY(22%) scale(.92);
+ }
+ .envelope.aberto .carta{
+   transform:translateY(-20%) scale(1)!important;
  }
 }
 
@@ -724,7 +730,7 @@
       <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Abrir convite">
         <div class="carta">
           <div>
-            <img class="logo-envelope" src="assets/monograma.png" alt="Monograma R e M"><h2>Ronilson & Márcia</h2>
+            <h2 style="font-family:'Cinzel',serif;font-size:30px;letter-spacing:2px;color:var(--marinho);line-height:1.5;text-align:center;">COM MUITO AMOR<br>CONVIDAM VOCÊ<br>PARA CELEBRAR SEU CASAMENTO</h2>
             <p>30 • OUTUBRO • 2026</p>
           </div>
         </div>
@@ -760,24 +766,18 @@
           <img src="assets/casal.png" alt="Ronilson e Márcia">
         </figure>
 
-        <h1 class="script-title">Ronilson&nbsp;<span class="amp">&</span>&nbsp;Márcia</h1>
+        <h1 class="script-title">Ronilson <span class="amp">&</span> Márcia</h1>
 
         <div class="data-e-local">
           <div class="numero-dia">30</div>
           <div class="mes-ano">OUTUBRO • 2026</div>
 
-          <div class="horario-local">
-            <div>
-              
-            </div>
-
-            
-
-            <div>
-              <strong>19:00</strong>
-              <span>HORAS</span>
-            </div>
-          </div>
+          <div class="horario-local" style="display:flex;justify-content:center;align-items:center;">
+<div style="text-align:center">
+<strong>19:00</strong>
+<span>HORAS</span>
+</div>
+</div>
 
           <div class="cidade">MANAUS – AM</div>
           <div class="linha-ornamental" style="margin:18px auto 0;max-width:360px;color:var(--dourado)">
@@ -796,7 +796,7 @@
       <div class="content">
         <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
         <p class="eyebrow">Uma celebração de amor</p>
-        <h2 class="section-title">Com muito amor convidam você<br>para celebrar seu casamento</h2>
+        <h2 class="section-title">Este momento ficará para sempre</h2>
 
         <div class="mensagem-especial">
           <p class="versiculo">“O amor é paciente, o amor é bondoso.”</p>
