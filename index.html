@@ -645,7 +645,42 @@
       }
     }
 
-  </style>
+  
+/* ===== RESPONSIVIDADE APRIMORADA ===== */
+.frame{width:min(1200px,calc(100% - 20px))!important;min-height:100vh!important;padding:clamp(30px,6vw,80px)!important}
+.hero-photo{width:100%!important;max-width:650px!important;aspect-ratio:4/5!important;min-height:auto!important;margin:auto!important}
+.hero-photo img{width:100%!important;height:100%!important;min-height:auto!important;object-fit:cover!important}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:15px}
+.btn{min-width:220px}
+.mapa-wrap iframe{width:100%;height:350px}
+@media (max-width:1200px){
+.frame{width:95%!important}
+.content{width:100%!important}
+}
+@media (max-width:992px){
+.script-title{font-size:60px!important}
+.section-title{font-size:52px!important}
+.hero-photo{max-width:500px!important}
+}
+@media (max-width:768px){
+.frame{width:100%!important;min-height:auto!important;padding:30px 20px!important}
+.content{width:100%!important}
+.hero-photo{width:100%!important;aspect-ratio:4/5!important}
+.script-title{font-size:42px!important;white-space:normal!important}
+.section-title{font-size:38px!important}
+.lead{font-size:18px!important}
+.actions{flex-direction:column}
+.btn{width:100%;max-width:350px;min-width:0}
+.mapa-wrap iframe{height:240px}
+}
+@media (max-width:480px){
+.logo-rm{width:100px!important}
+.script-title{font-size:34px!important}
+.texto-casamento{font-size:38px!important}
+.hero-photo{aspect-ratio:1/1.2!important}
+}
+
+</style>
 </head>
 <body>
   <audio id="musica" loop preload="auto"><source src="assets/musica.mp3" type="audio/mpeg"></audio>
