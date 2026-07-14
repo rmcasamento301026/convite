@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fbf6ec">
+  <title>Ronilson &amp; Márcia | Convite de Casamento</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --marinho:#173454;
+      --marinho-2:#294d72;
+      --azul-folha:#71869a;
+      --azul-claro:#dce6ed;
+      --dourado:#b58a2f;
+      --dourado-claro:#d9bb74;
+      --creme:#fbf6ec;
+      --papel:#fffdf8;
+      --texto:#26384b;
+      --sombra:0 22px 60px rgba(27,43,61,.16);
+      --borda:rgba(181,138,47,.62);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      color:var(--texto);
+      background-color:var(--creme);
+      font-family:'Cormorant Garamond',serif;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* IMAGEM DOS NOIVOS COMO FUNDO FIXO */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        linear-gradient(rgba(251,246,236,.80),rgba(251,246,236,.90)),
+        url('assets/casal.png') center bottom / min(72vw,820px) auto no-repeat,
+        linear-gradient(180deg,#fffdf8 0%,#f3eadb 100%);
+      pointer-events:none;
+    }
+
+    /* CAMADA SUAVE PARA MANTER A LEITURA */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        radial-gradient(circle at 10% 12%,rgba(217,187,116,.16),transparent 23rem),
+        radial-gradient(circle at 92% 18%,rgba(41,77,114,.12),transparent 25rem);
+      pointer-events:none;
+    }
+
+    button,a,input{font:inherit}
+    a{text-decoration:none;color:inherit}
+
+    /* ABERTURA / ENVELOPE */
+    #abertura{
+      position:fixed;
+      inset:0;
+      z-index:1000;
+      display:grid;
+      place-items:center;
+      padding:20px;
+      background:
+        linear-gradient(rgba(251,246,236,.76),rgba(251,246,236,.88)),
+        url('assets/casal.png') center bottom / min(82vw,720px) auto no-repeat,
+        linear-gradient(180deg,#fffdf8,#efe3d1);
+      transition:opacity .8s ease,visibility .8s ease;
+    }
+    #abertura.oculta{opacity:0;visibility:hidden}
+
+    .abertura-box{width:min(92vw,620px);text-align:center;perspective:1400px}
+    .monograma{
+      font-family:'Alex Brush',cursive;
+      font-size:clamp(52px,10vw,88px);
+      line-height:.9;
+      color:var(--marinho);
+      text-shadow:0 2px 0 #fff,0 8px 24px rgba(23,52,84,.18);
+      margin-bottom:18px;
+    }
+    .monograma span{color:var(--dourado)}
+
+    .envelope{
+      position:relative;
+      width:min(90vw,560px);
+      aspect-ratio:1.45/1;
+      margin:auto;
+      cursor:pointer;
+      transform-style:preserve-3d;
+      filter:drop-shadow(0 25px 35px rgba(25,38,51,.25));
+    }
+    .carta{
+      position:absolute;
+      left:10%;right:10%;bottom:8%;height:76%;
+      z-index:2;
+      border:1px solid var(--borda);
+      background:linear-gradient(180deg,#fff,#fffaf0);
+      display:grid;
+      place-items:center;
+      padding:25px;
+      transform:translateY(24%) scale(.93);
+      transition:transform 1.25s cubic-bezier(.2,.8,.2,1),z-index .2s .65s;
+    }
+    .carta::before{
+      content:"";position:absolute;inset:10px;border:1px solid rgba(181,138,47,.45);pointer-events:none
+    }
+    .carta h2{font-family:'Alex Brush',cursive;font-size:clamp(40px,8vw,68px);color:var(--marinho);font-weight:400}
+    .carta p{font-family:'Cinzel',serif;letter-spacing:2px;color:var(--dourado);font-size:13px}
+
+    .envelope-base{position:absolute;inset:0;background:linear-gradient(135deg,var(--marinho-2),var(--marinho));border-radius:8px;overflow:hidden;z-index:1}
+    .envelope-base::before,.envelope-base::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.06)}
+    .envelope-base::before{clip-path:polygon(0 20%,50% 63%,0 100%)}
+    .envelope-base::after{clip-path:polygon(100% 20%,50% 63%,100% 100%)}
+    .envelope-frente{position:absolute;inset:0;z-index:4;background:linear-gradient(145deg,#274c70,#173454);clip-path:polygon(0 23%,50% 66%,100% 23%,100% 100%,0 100%);border-radius:8px}
+    .envelope-tampa{position:absolute;inset:0;z-index:5;background:#203f61;clip-path:polygon(0 0,100% 0,50% 66%);transform-origin:top;transition:transform 1s ease;border-radius:8px}
+    .selo{
+      position:absolute;left:50%;top:56%;z-index:7;transform:translate(-50%,-50%);
+      width:76px;height:76px;border-radius:50%;display:grid;place-items:center;
+      color:#fff;background:radial-gradient(circle at 35% 30%,#d9bb74,#a87821 72%);
+      border:3px double rgba(255,255,255,.8);box-shadow:0 8px 20px rgba(0,0,0,.25);
+      font-family:'Alex Brush',cursive;font-size:30px;transition:.55s ease;
+    }
+    .envelope.aberto .envelope-tampa{transform:rotateX(180deg);z-index:0}
+    .envelope.aberto .selo{opacity:0;transform:translate(-50%,-50%) scale(.5)}
+    .envelope.aberto .carta{transform:translateY(-52%) scale(1);z-index:6}
+    .toque{margin-top:24px;font-family:'Cinzel',serif;letter-spacing:3px;font-size:12px;color:var(--marinho);animation:pulso 1.7s infinite}
+    @keyframes pulso{50%{opacity:.45}}
+
+    /* ESTRUTURA */
+    .site{opacity:0;transition:opacity 1s ease}
+    .site.visivel{opacity:1}
+    .frame{
+      width:min(1120px,calc(100% - 28px));
+      min-height:calc(100vh - 28px);
+      margin:14px auto;
+      padding:clamp(18px,4vw,48px);
+      border:1px solid var(--borda);
+      background:rgba(255,253,248,.78);
+      box-shadow:var(--sombra);
+      position:relative;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      backdrop-filter:blur(7px);
+    }
+    .frame::before{
+      content:"";position:absolute;inset:12px;border:1px solid rgba(181,138,47,.34);pointer-events:none
+    }
+    .frame::after{
+      content:"✦";position:absolute;left:50%;bottom:9px;transform:translateX(-50%);color:var(--dourado);background:var(--papel);padding:0 14px;font-size:17px
+    }
+    .content{width:min(940px,100%);position:relative;z-index:2;text-align:center}
+
+    .eyebrow{font-family:'Cinzel',serif;letter-spacing:3px;text-transform:uppercase;font-size:clamp(11px,1.6vw,15px);color:var(--marinho);margin-bottom:14px}
+    .script-title{font-family:'Alex Brush',cursive;font-weight:400;font-size:clamp(58px,11vw,118px);line-height:.86;color:var(--marinho);margin:10px 0 16px}
+    .script-title .amp{color:var(--dourado);font-size:.72em;margin:0 .08em}
+    .section-title{font-family:'Alex Brush',cursive;font-weight:400;font-size:clamp(46px,7vw,78px);color:var(--marinho);line-height:1;margin-bottom:16px}
+    .lead{font-size:clamp(20px,2.5vw,27px);line-height:1.55;max-width:760px;margin:auto;color:#35495d}
+    .ornamento{display:flex;align-items:center;gap:12px;justify-content:center;margin:18px auto;color:var(--dourado)}
+    .ornamento::before,.ornamento::after{content:"";width:min(150px,25vw);height:1px;background:linear-gradient(90deg,transparent,var(--dourado))}
+    .ornamento::after{background:linear-gradient(90deg,var(--dourado),transparent)}
+
+    /* CAPA DIVIDIDA */
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(20px,4vw,50px);align-items:center}
+    .hero-text{padding:20px}
+    .hero-photo{
+      position:relative;min-height:620px;border:1px solid var(--borda);padding:12px;background:#fff;box-shadow:0 18px 45px rgba(23,52,84,.18)
+    }
+    .hero-photo img{width:100%;height:100%;min-height:594px;object-fit:cover;object-position:center 43%;display:block;filter:saturate(.92) contrast(.96)}
+    .hero-photo::after{content:"";position:absolute;inset:12px;background:linear-gradient(180deg,rgba(255,253,248,.06),rgba(255,253,248,.28));pointer-events:none}
+
+    .date-line{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;max-width:620px;margin:24px auto;font-family:'Cinzel',serif;color:var(--marinho)}
+    .date-line .divider{width:1px;height:68px;background:var(--dourado)}
+    .date-line strong{display:block;font-size:clamp(23px,3vw,34px);font-weight:500}
+    .date-line span{display:block;font-size:13px;letter-spacing:2px;margin-top:5px}
+
+    .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+    .btn{border:1px solid var(--marinho);padding:13px 22px;border-radius:999px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:1.5px;background:var(--marinho);color:#fff;transition:.25s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-2px);background:var(--dourado);border-color:var(--dourado)}
+    .btn.outline{background:transparent;color:var(--marinho)}
+    .btn.outline:hover{color:#fff}
+
+    /* CONVITE OFICIAL EM DUAS COLUNAS */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+    .panel{background:rgba(255,255,255,.7);border:1px solid rgba(181,138,47,.35);padding:clamp(26px,4vw,46px);display:flex;flex-direction:column;justify-content:center;min-height:420px;position:relative}
+    .panel::before{content:"";position:absolute;inset:8px;border:1px solid rgba(23,52,84,.12);pointer-events:none}
+    .big-date{font-family:'Cinzel',serif;font-size:clamp(72px,12vw,130px);line-height:.85;color:var(--marinho)}
+    .month{font-family:'Cinzel',serif;letter-spacing:5px;font-size:clamp(17px,2.4vw,25px);color:var(--dourado);margin-top:14px}
+    .local{font-size:21px;line-height:1.45;margin:15px 0}
+
+    /* CARDS */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+    .info-card{padding:28px 18px;border:1px solid rgba(181,138,47,.35);background:rgba(255,255,255,.68);min-height:170px;display:grid;place-items:center}
+    .info-card svg{width:44px;height:44px;stroke:var(--dourado);fill:none;stroke-width:1.4;margin-bottom:10px}
+    .info-card strong{font-family:'Cinzel',serif;font-size:14px;letter-spacing:1px;color:var(--marinho);display:block;margin-bottom:7px}
+    .info-card span{font-size:18px}
+
+    /* TIMELINE */
+    .timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:38px;position:relative}
+    .timeline::before{content:"";position:absolute;left:7%;right:7%;top:42px;height:1px;background:var(--dourado)}
+    .event{position:relative;z-index:2;padding:5px}
+    .event .dot{width:14px;height:14px;border-radius:50%;background:var(--dourado);border:4px solid var(--papel);box-sizing:content-box;margin:33px auto 16px}
+    .event strong{font-family:'Cinzel',serif;color:var(--marinho);display:block;font-size:16px}
+    .event span{font-size:16px;line-height:1.25;display:block;margin-top:5px}
+
+    /* FORM */
+    .form-box{max-width:600px;margin:28px auto 0;display:grid;gap:12px}
+    input,textarea{width:100%;border:1px solid rgba(23,52,84,.26);background:rgba(255,255,255,.78);padding:15px 17px;color:var(--texto);outline:none;font-size:17px}
+    input:focus,textarea:focus{border-color:var(--dourado);box-shadow:0 0 0 3px rgba(181,138,47,.12)}
+    textarea{min-height:90px;resize:none}
+
+    .nav-dots{position:fixed;right:15px;top:50%;transform:translateY(-50%);z-index:50;display:grid;gap:8px}
+    .nav-dots a{width:10px;height:10px;border-radius:50%;border:1px solid var(--dourado);background:rgba(255,255,255,.8)}
+
+    footer{text-align:center;padding:26px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;color:var(--marinho)}
+
+    @media(max-width:850px){
+      .hero-grid,.split{grid-template-columns:1fr}
+      .hero-photo{min-height:480px;order:-1}
+      .hero-photo img{min-height:454px;object-position:center 34%}
+      .cards{grid-template-columns:1fr 1fr}
+      .timeline{grid-template-columns:1fr;max-width:470px;margin-inline:auto}
+      .timeline::before{left:18px;right:auto;top:8px;bottom:8px;width:1px;height:auto}
+      .event{display:grid;grid-template-columns:42px 1fr;text-align:left;align-items:center}
+      .event .dot{margin:12px auto}
+      .nav-dots{display:none}
+    }
+
+    @media(max-width:560px){
+      .frame{width:calc(100% - 12px);margin:6px auto;min-height:auto;padding:38px 22px}
+      .frame::before{inset:7px}
+      .cards{grid-template-columns:1fr}
+      .date-line{gap:12px}
+      .date-line .divider{height:55px}
+      .hero-photo{min-height:360px;padding:8px}
+      .hero-photo img{min-height:344px}
+      .script-title{font-size:58px;white-space:normal}
+      .monograma{font-size:58px}
+      .selo{width:62px;height:62px;font-size:25px}
+      .toque{font-size:10px}
+    }
+
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  
+
+    /* FUNDO FLORAL ENVIADO — aplicado em todas as folhas do convite */
+    body{
+      background:#eee5d6;
+    }
+
+    body::before{
+      background:
+        linear-gradient(rgba(251,246,236,.76),rgba(251,246,236,.88)),
+        url('assets/casal.png') center bottom / min(72vw,820px) auto no-repeat,
+        linear-gradient(180deg,#fffdf8 0%,#f3eadb 100%);
+    }
+
+    #abertura{
+      background:
+        linear-gradient(rgba(255,250,241,.55),rgba(255,250,241,.72)),
+        url('assets/fundo-convite.png') center / cover no-repeat;
+    }
+
+    .frame{
+      width:min(1000px,calc(100% - 22px));
+      min-height:min(1480px,calc(100vh - 20px));
+      margin:10px auto;
+      padding:clamp(95px,11vw,155px) clamp(46px,10vw,130px);
+      border:none;
+      background:
+        linear-gradient(rgba(255,252,246,.17),rgba(255,252,246,.17)),
+        url('assets/fundo-convite.png') center / 100% 100% no-repeat;
+      box-shadow:0 22px 65px rgba(35,49,64,.22);
+      backdrop-filter:none;
+    }
+    .frame::before,.frame::after{display:none}
+    .content{max-width:760px}
+    .panel,.info-card{background:rgba(255,255,255,.54);backdrop-filter:blur(2px)}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo{max-width:620px;width:100%;min-height:470px;margin:0 auto;order:-1;background:rgba(255,255,255,.42)}
+    .hero-photo img{min-height:444px;object-position:center 45%;}
+
+    .logo-rm{
+      display:block;
+      width:clamp(110px,20vw,185px);
+      margin:0 auto 18px;
+      filter:drop-shadow(0 8px 18px rgba(128,89,17,.25));
+    }
+    .logo-envelope{width:112px;margin:0 auto 8px;display:block}
+    .selo{padding:0;overflow:hidden;background:transparent;border:none;box-shadow:none;width:92px;height:92px}
+    .selo img{width:100%;height:100%;object-fit:contain}
+
+    .audio-btn{
+      position:fixed;right:18px;bottom:18px;z-index:1200;width:52px;height:52px;
+      border-radius:50%;border:1px solid var(--dourado);background:var(--marinho);color:#fff;
+      cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.22);font-size:19px;
+    }
+
+    @media(max-width:560px){
+      .frame{
+        width:calc(100% - 8px);margin:4px auto;
+        min-height:760px;
+        padding:82px 36px 92px;
+        background-size:100% 100%;
+      }
+      .hero-photo{min-height:320px;padding:7px}
+      .hero-photo img{min-height:304px}
+      .content{width:100%}
+      .lead{font-size:19px}
+      .panel{padding:24px 18px}
+    }
+
+  </style>
+</head>
+<body>
+  <audio id="musica" loop preload="auto"><source src="assets/musica.mp3" type="audio/mpeg"></audio>
+  <button class="audio-btn" id="audioBtn" type="button" aria-label="Tocar ou pausar música">♫</button>
+
+
+  <section id="abertura" aria-label="Abertura do convite">
+    <div class="abertura-box">
+      <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M"><div class="monograma">Ronilson <span>&</span> Márcia</div>
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Abrir convite">
+        <div class="carta">
+          <div>
+            <img class="logo-envelope" src="assets/monograma.png" alt="Monograma R e M"><h2>Ronilson & Márcia</h2>
+            <p>30 • OUTUBRO • 2026</p>
+          </div>
+        </div>
+        <div class="envelope-base"></div>
+        <div class="envelope-tampa"></div>
+        <div class="envelope-frente"></div>
+        <div class="selo"><img src="assets/monograma.png" alt="Selo R e M"></div>
+      </div>
+      <p class="toque">TOQUE NO ENVELOPE PARA ABRIR</p>
+    </div>
+  </section>
+
+  <nav class="nav-dots" aria-label="Navegação rápida">
+    <a href="#inicio" title="Início"></a><a href="#convite" title="Convite"></a><a href="#locais" title="Locais"></a><a href="#dia" title="Nosso dia"></a><a href="#presentes" title="Presentes"></a><a href="#presenca" title="Presença"></a>
+  </nav>
+
+  <main class="site" id="site">
+    <section class="frame" id="inicio">
+      <div class="content hero-grid">
+        <div class="hero-text">
+          <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
+          <p class="eyebrow">Com a bênção de Deus e de nossas famílias</p>
+          <p class="lead">Temos a alegria de convidar você para</p>
+          <h1 class="script-title">Ronilson <span class="amp">&</span> Márcia</h1>
+          <div class="ornamento">♥</div>
+          <div class="date-line">
+            <div><strong>30 de outubro</strong><span>DE 2026</span></div>
+            <div class="divider"></div>
+            <div><strong>19:30</strong><span>HORAS</span></div>
+          </div>
+          <p class="lead">Manaus – AM</p>
+          <div class="actions">
+            <a class="btn" href="#convite">Ver convite</a>
+            <a class="btn outline" href="#presenca">Confirmar presença</a>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="assets/foto-convite.jpeg" alt="Ronilson e Márcia">
+        </figure>
+      </div>
+    </section>
+
+    <section class="frame" id="convite">
+      <div class="content">
+        <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
+        <p class="eyebrow">O nosso casamento</p>
+        <h2 class="section-title">Um convite feito com carinho</h2>
+        <div class="split">
+          <div class="panel">
+            <p class="lead">“O amor é paciente, o amor é bondoso.”</p>
+            <div class="ornamento">♥</div>
+            <p class="lead">Queridos familiares e amigos, será uma grande alegria celebrar este momento ao lado de quem faz parte da nossa história.</p>
+          </div>
+          <div class="panel">
+            <div class="big-date">30</div>
+            <div class="month">OUTUBRO • 2026</div>
+            <div class="ornamento">✦</div>
+            <p class="lead">Sexta-feira, às 19h30</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="frame" id="locais">
+      <div class="content">
+        <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
+        <p class="eyebrow">Cerimônia e recepção</p>
+        <h2 class="section-title">Onde celebraremos</h2>
+        <div class="cards">
+          <article class="info-card">
+            <div>
+              <svg viewBox="0 0 24 24"><path d="M4 21V10l8-6 8 6v11M9 21v-6h6v6M12 4v5M10 7h4"/></svg>
+              <strong>CERIMÔNIA</strong>
+              <span>Local a confirmar</span>
+            </div>
+          </article>
+          <article class="info-card">
+            <div>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <strong>HORÁRIO</strong>
+              <span>19h30</span>
+            </div>
+          </article>
+          <article class="info-card">
+            <div>
+              <svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2"/></svg>
+              <strong>CIDADE</strong>
+              <span>Manaus – AM</span>
+            </div>
+          </article>
+        </div>
+        <div class="actions"><a class="btn outline" href="#presenca">Confirmar presença</a></div>
+      </div>
+    </section>
+
+    <section class="frame" id="dia">
+      <div class="content">
+        <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
+        <p class="eyebrow">Programação</p>
+        <h2 class="section-title">Nosso dia</h2>
+        <div class="timeline">
+          <div class="event"><div class="dot"></div><div><strong>19h30</strong><span>Cerimônia</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>20h30</strong><span>Recepção</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>21h30</strong><span>Jantar</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>22h00</strong><span>Dança dos noivos</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>22h30</strong><span>Corte do bolo</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>23h00</strong><span>Abertura da pista</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="frame" id="presentes">
+      <div class="content">
+        <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
+        <p class="eyebrow">Com carinho</p>
+        <h2 class="section-title">Lista de presentes</h2>
+        <p class="lead">Sua presença é o nosso maior presente. Para quem desejar nos presentear de outra forma, deixamos abaixo algumas opções.</p>
+        <div class="actions">
+          <a class="btn" href="https://www.bemol.com.br/lp/marcia%26ronilson" target="_blank" rel="noopener">Lista Bemol</a>
+          <a class="btn" href="https://www.dinamicautil.com.br/index.php?route=listapresente/edit&id_lista=60034" target="_blank" rel="noopener">Lista Dinâmica</a>
+          <a class="btn outline" href="https://wa.me/5592984236693" target="_blank" rel="noopener">Presente via WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="frame" id="presenca">
+      <div class="content">
+        <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
+        <p class="eyebrow">Esperamos por você</p>
+        <h2 class="section-title">Confirmar presença</h2>
+        <p class="lead">Digite seu nome ou telefone para localizar o convite e enviar a confirmação pelo WhatsApp.</p>
+        <div class="form-box">
+          <input id="busca" type="text" autocomplete="name" placeholder="Digite seu nome ou telefone">
+          <button class="btn" type="button" id="confirmarBtn">Confirmar presença</button>
+          <textarea id="resultado" readonly placeholder="O resultado aparecerá aqui"></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>RONILSON & MÁRCIA • 30 DE OUTUBRO DE 2026</footer>
+
+  <script>
+    const abertura = document.getElementById('abertura');
+    const envelope = document.getElementById('envelope');
+    const site = document.getElementById('site');
+    let aberto = false;
+    const musica = document.getElementById('musica');
+    const audioBtn = document.getElementById('audioBtn');
+    musica.volume = 0.5;
+    function alternarMusica(){
+      if(musica.paused){ musica.play().then(()=>audioBtn.textContent='❚❚').catch(()=>{}); }
+      else { musica.pause(); audioBtn.textContent='♫'; }
+    }
+    audioBtn.addEventListener('click', alternarMusica);
+
+    function abrirConvite(){
+      if(aberto) return;
+      aberto = true;
+      envelope.classList.add('aberto');
+      musica.play().then(()=>audioBtn.textContent='❚❚').catch(()=>{});
+      setTimeout(() => {
+        abertura.classList.add('oculta');
+        site.classList.add('visivel');
+        document.body.style.overflow = 'auto';
+      }, 1550);
+    }
+
+    envelope.addEventListener('click', abrirConvite);
+    envelope.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') abrirConvite();
+    });
+    document.body.style.overflow = 'hidden';
+
+    function normalizar(texto){
+      return texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\W/g,'');
+    }
+
+    const convidados = [
+      {nome:'Elena',tel:'92988415301'},
+      {nome:'Raimundo',tel:'92999825332'},
+      {nome:'Ronald',tel:'92984501066'},
+      {nome:'Angela',tel:'92984088432'},
+      {nome:'William',tel:'92981270904'},
+      {nome:'Ana Rita',tel:'92993471741'},
+      {nome:'Edvaldo',tel:'92993293049'},
+      {nome:'Maria',tel:'92984752375'},
+      {nome:'Junior',tel:'92999767612'},
+      {nome:'Margareth e Brenda',tel:'92991284550'},
+      {nome:'Anilson',tel:'92993704465'},
+      {nome:'Vania',tel:'92991772318'},
+      {nome:'Monica e Sandro',tel:'92994730568'},
+      {nome:'Clodoaldo',tel:'92981710375'}
+    ];
+
+    function consultar(){
+      const campo = document.getElementById('busca');
+      const resultado = document.getElementById('resultado');
+      const valor = campo.value.trim();
+
+      if(!valor){
+        resultado.value = 'Digite seu nome ou telefone.';
+        campo.focus();
+        return;
+      }
+
+      const busca = normalizar(valor);
+      const pessoa = convidados.find(c => normalizar(c.nome).includes(busca) || c.tel.includes(valor.replace(/\D/g,'')));
+
+      if(pessoa){
+        resultado.value = `Convite localizado: ${pessoa.nome}. Abrindo o WhatsApp para confirmar.`;
+        const mensagem = `Confirmo presença no casamento de Ronilson & Márcia.\nNome: ${pessoa.nome}`;
+        window.open(`https://wa.me/5592984236693?text=${encodeURIComponent(mensagem)}`,'_blank','noopener');
+      }else{
+        resultado.value = 'Nome não encontrado. Verifique a escrita ou entre em contato com os noivos.';
+      }
+    }
+
+    document.getElementById('confirmarBtn').addEventListener('click',consultar);
+    document.getElementById('busca').addEventListener('keydown',e => {if(e.key === 'Enter') consultar();});
+  </script>
+</body>
+</html>
