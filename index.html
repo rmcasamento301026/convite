@@ -848,10 +848,7 @@
           </article>
         </div>
 
-        <div class="actions">
-          <a class="btn" href="#presenca">Confirmar presença</a>
-        </div>
-      </div>
+        
     </section>
 
     <section class="frame" id="dia">
@@ -861,11 +858,11 @@
         <h2 class="section-title">Nosso dia</h2>
         <div class="timeline">
           <div class="event"><div class="dot"></div><div><strong>19h00</strong><span>Cerimônia</span></div></div>
-          <div class="event"><div class="dot"></div><div><strong>20h00</strong><span>Recepção dos convidados</span></div></div>
-          <div class="event"><div class="dot"></div><div><strong>21h30</strong><span>Jantar</span></div></div>
-          <div class="event"><div class="dot"></div><div><strong>22h00</strong><span>Dança dos noivos</span></div></div>
-          <div class="event"><div class="dot"></div><div><strong>22h30</strong><span>Corte do bolo</span></div></div>
-          <div class="event"><div class="dot"></div><div><strong>23h00</strong><span>Abertura da pista</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>20h30</strong><span>Recepção dos convidados</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>21h00</strong><span>Entrada dos Noivos</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>22h00</strong><span>Jantar</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>22h30</strong><span>Fotos com noivos</span></div></div>
+          <div class="event"><div class="dot"></div><div><strong>23h00</strong><span>Música</span></div></div>
         </div>
       </div>
     </section>
@@ -878,25 +875,110 @@
         <p class="lead">Sua presença é o nosso maior presente. Para quem desejar nos presentear de outra forma, deixamos abaixo algumas opções.</p>
         <div class="actions">
           <a class="btn" href="https://www.bemol.com.br/lp/marcia%26ronilson" target="_blank" rel="noopener">Lista Bemol</a>
-          <a class="btn" href="https://www.dinamicautil.com.br/index.php?route=listapresente/edit&id_lista=60034" target="_blank" rel="noopener">Lista Dinâmica</a>
-          <a class="btn outline" href="https://wa.me/5592984236693" target="_blank" rel="noopener">Presentear os noivos</a>
-        </div>
+          <div class="actions">
+  <a class="btn" href="https://www.dinamicautil.com.br/index.php?route=listapresente/edit&id_lista=60034" 
+    target="_blank" rel="noopener">
+    Presentear via PIX
+  </a>
+</div>
       </div>
     </section>
 
     <section class="frame" id="presenca">
-      <div class="content">
-        <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
-        <p class="eyebrow">Esperamos por você</p>
-        <h2 class="section-title">Confirmar presença</h2>
-        <p class="lead">Digite seu nome ou telefone para localizar o convite e enviar a confirmação pelo WhatsApp.</p>
-        <div class="form-box">
-          <input id="busca" type="text" autocomplete="name" placeholder="Digite seu nome ou telefone">
-          <button class="btn" type="button" id="confirmarBtn">Confirmar presença</button>
-          <textarea id="resultado" readonly placeholder="O resultado aparecerá aqui"></textarea>
+  <div class="content">
+
+    <img class="logo-rm" src="assets/monograma.png" alt="Monograma R e M">
+
+    <p class="eyebrow">Esperamos por você</p>
+
+    <h2 class="section-title">Confirmar presença</h2>
+
+    <p class="lead">
+      Confirme sua presença informando seu nome ou telefone.
+      Após a confirmação, nossa cerimonialista entrará em contato
+      pelo WhatsApp para enviar as informações do seu convite.
+    </p>
+
+    <div class="form-box">
+
+      <input 
+        id="busca" 
+        type="text" 
+        autocomplete="name" 
+        placeholder="Digite seu nome ou telefone"
+      >
+
+      <button 
+        class="btn" 
+        type="button" 
+        id="confirmarBtn">
+        Confirmar presença
+      </button>
+
+      <textarea 
+        id="resultado" 
+        readonly 
+        placeholder="O resultado aparecerá aqui">
+      </textarea>
+
+    </div>
+
+    <!-- Informações após a confirmação -->
+    <div class="info-convite">
+
+      <div class="info-item">
+        <span class="info-icon">📱</span>
+        <div>
+          <strong>Contato da cerimonialista</strong>
+          <p>
+            Após a confirmação, a cerimonialista entrará em contato
+            com você pelo WhatsApp.
+          </p>
         </div>
       </div>
-    </section>
+
+      <div class="info-item">
+        <span class="info-icon">▣</span>
+        <div>
+          <strong>QR Code</strong>
+          <p>
+            Você receberá um QR Code exclusivo para apresentação
+            na entrada do evento.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="info-icon">♢</span>
+        <div>
+          <strong>Mesa reservada</strong>
+          <p>
+            A cerimonialista informará o número da mesa reservada
+            para você e seus acompanhantes.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <span class="info-icon">🔑</span>
+        <div>
+          <strong>Senha de entrada</strong>
+          <p>
+            Junto com o QR Code, você receberá a senha ou código
+            necessário para acesso ao evento.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="confirmation-note">
+      💜 Sua confirmação é muito importante para nós.
+      Aguardamos você para celebrar esse momento especial!
+    </p>
+
+  </div>
+</section>
   </main>
 
   <footer>RONILSON & MÁRCIA • 30 DE OUTUBRO DE 2026</footer>
