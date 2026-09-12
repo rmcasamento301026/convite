@@ -161,6 +161,58 @@
     }
     .content{width:min(940px,100%);position:relative;z-index:2;text-align:center}
 
+    /* CONFIRMAR PRESENÇA — CENTRALIZAÇÃO */
+    #presenca{
+      display:grid;
+      place-items:center;
+      text-align:center;
+    }
+
+    #presenca .content-presenca{
+      width:min(760px,100%);
+      max-width:760px;
+      margin:0 auto;
+      position:relative;
+      z-index:2;
+      text-align:center;
+    }
+
+    #presenca .logo-rm{
+      display:block;
+      margin:0 auto 18px;
+    }
+
+    #presenca .eyebrow,
+    #presenca .section-title{
+      width:100%;
+      text-align:center;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    #presenca .cabecalho-convite{
+      width:100%;
+      max-width:760px;
+      margin:20px auto 30px;
+      text-align:center;
+    }
+
+    #presenca .texto-superior{
+      width:100%;
+      text-align:center;
+      margin:2px auto;
+    }
+
+    #presenca .ornamento-cabecalho{
+      width:100%;
+      max-width:380px;
+      margin:24px auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+
     .eyebrow{font-family:'Cinzel',serif;letter-spacing:3px;text-transform:uppercase;font-size:clamp(11px,1.6vw,15px);color:var(--marinho);margin-bottom:14px}
     .script-title{font-family:'Alex Brush',cursive;font-weight:400;font-size:clamp(58px,11vw,118px);line-height:.86;color:var(--marinho);margin:10px 0 16px}
     .script-title .amp{color:var(--dourado);font-size:.72em;margin:0 .08em}
@@ -925,60 +977,70 @@
 <!-- CONFIRMAR PRESENÇA - OUTRA PÁGINA -->
 <!-- ============================= -->
 
-<section class="frame" id="presenca">
+    <!-- ============================= -->
+    <!-- CONFIRMAR PRESENÇA - OUTRA PÁGINA -->
+    <!-- ============================= -->
 
-  <div class="content-presenca">
+    <section class="frame" id="presenca">
 
-    <img
-      class="logo-rm"
-      src="assets/monograma.png"
-      alt="Monograma R e M">
+      <div class="content-presenca">
 
- 
-    <p class="eyebrow">Esperamos por você</p>
-        <h2 class="section-title">Confirmar presença</h2>
+        <img
+          class="logo-rm"
+          src="assets/monograma.png"
+          alt="Monograma R e M"
+        >
 
-    <div class="cabecalho-convite">
+        <p class="eyebrow">
+          Esperamos por você
+        </p>
 
-      <p class="texto-superior">
-        Próximo à data da cerimônia, nossa cerimonialista
-      </p>
+        <h2 class="section-title">
+          Confirmar presença
+        </h2>
 
-      <p class="texto-superior">
-        entrará em contato pelo mesmo número de WhatsApp
-      </p>
+        <div class="cabecalho-convite">
 
-      <p class="texto-superior">
-        para confirmar sua presença e enviar as informações
-      </p>
+          <p class="texto-superior">
+            Próximo à data da cerimônia, nossa cerimonialista
+          </p>
 
-      <p class="texto-superior">
-        sobre o acesso ao evento e a recepção.
-      </p>
+          <p class="texto-superior">
+            entrará em contato pelo mesmo número de WhatsApp
+          </p>
 
-      <div class="ornamento-cabecalho">
+          <p class="texto-superior">
+            para confirmar sua presença e enviar as informações
+          </p>
 
-        <span></span>
+          <p class="texto-superior">
+            sobre o acesso ao evento e a recepção.
+          </p>
 
-        <b>♥</b>
+          <div class="ornamento-cabecalho">
 
-        <span></span>
+            <span></span>
+
+            <b>♥</b>
+
+            <span></span>
+
+          </div>
+
+          <p class="texto-superior">
+            Após a confirmação, você receberá seu QR Code
+          </p>
+
+          <p class="texto-superior">
+            e as informações sobre sua mesa reservada.
+          </p>
+
+        </div>
 
       </div>
 
-      <p class="texto-superior">
-        Após a confirmação, você receberá seu QR Code
-      </p>
+    </section>
 
-      <p class="texto-superior">
-        e as informações sobre sua mesa reservada.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
 
 
 
